@@ -3,6 +3,7 @@ import { StyleSheet} from 'react-native';
 import {Root, Header, Left, Body, Title, Right, Content, Footer, FooterTab, Icon, Text, Button, Drawer} from 'native-base';
 import SideBar from './sidebar';
 import Wall from './wall';
+import Notes from './notes';
 
 class main extends React.Component {
   constructor(props) {
@@ -15,25 +16,32 @@ class main extends React.Component {
   }
   componentWillMount(){
     this.setState({
-      page: 'home',
-      title: 'Noticias',
+      page: 'notes',
+      //title: 'Noticias',
       user: this.props.user
     })
   }
 
-
+  changeTitle = (title) => {
+    this.setState({
+      title,
+    })
+  }
 
   loadContent = () => {
     switch (this.state.page) {
       case 'home':
-          return(<Wall user={this.state.user}/>)
+          return(<Wall title={this.changeTitle} user={this.state.user}/>)
         break;
-      default:
+      case 'notes':
+          return(
+            <Notes title={this.changeTitle} user={this.state.user}/>
 
+          )
+      default:
+          return(<Text>Hola</Text>)
     }
-    return(
-      <Text>Hola</Text>
-    )
+
   }
 
   changePage = (page) => {
@@ -56,7 +64,12 @@ class main extends React.Component {
   };
 
 
-
+  navigator = (page) =>{
+    this.setState({
+      page,
+    })
+    this.closeDrawer()
+  }
 
   render(){
     return(

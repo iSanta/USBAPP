@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleSheet, TouchableHighlight} from 'react-native';
 import { Text, View, List, ListItem, Button } from 'native-base';
 
 
@@ -19,13 +19,18 @@ class SideBar extends React.Component {
       <View style={styles.menuContainer}>
         <List>
           <ListItem>
+            <TouchableHighlight onPress={()=>{
+              this.props.navigator('home')
+            }}>
               <Text>Home</Text>
+            </TouchableHighlight>
           </ListItem>
           <ListItem>
-            <Text>asdasdasd</Text>
-          </ListItem>
-          <ListItem>
-            <Text>asdasdasd</Text>
+            <TouchableHighlight onPress={()=>{
+              this.props.navigator('notes')
+            }}>
+              <Text>Notas</Text>
+            </TouchableHighlight>
           </ListItem>
         </List>
       </View>

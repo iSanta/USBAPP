@@ -228,13 +228,13 @@ class imagePicker extends React.Component {
 
             <View style={{flex: 1}}>
               {this.imageSel()}
-              <Button onPress={this.selectAImage}>
+              <Button style={styles.buttons} onPress={this.selectAImage} full>
                 <Text>Seleccionar imagen</Text>
               </Button>
               {
                 this.loadImagesList()
               }
-              <Text>Estado de la imagen: {this.state.imageState}</Text>
+              <Text style={styles.texts}>Estado de la imagen: {this.state.imageState}</Text>
             </View>
 
 
