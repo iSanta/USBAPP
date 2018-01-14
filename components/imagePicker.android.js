@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Image, CameraRoll, ScrollView, TouchableHighlight, Dimensions, Platform } from 'react-native';
 import { Text, View, Button, Form, Item, Input, Toast } from 'native-base';
 import RNFetchBlob from 'react-native-fetch-blob';
-import firebase from 'firebase';
+import firebase from 'react-native-firebase';
+import firebaseStorage from 'firebase';
 
 var imageDownloadUrl = "sin montar";
 const { width } = Dimensions.get('window')
@@ -23,7 +24,7 @@ const uploadImage = (uri, imageName, mime = 'image/jpg') => {
   return new Promise((resolve, reject) => {
     const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
     let uploadBlob = null
-    const imageRef = firebase.storage().ref('wallImages').child(imageName)
+    const imageRef = firebaseStorage.storage().ref('wallImages').child(imageName)
     fs.readFile(uploadUri, 'base64').then((data) => {
       return Blob.build(data, {type: `${mime};BASE64`})
     }).then((blob) => {
@@ -35,11 +36,8 @@ const uploadImage = (uri, imageName, mime = 'image/jpg') => {
       imageRef.getDownloadURL().then(function(url) {
         imageDownloadUrl = url;
       });
-      Toast.show({
-        text: 'La imagen ha sido cargada.',
-        position: 'bottom',
-        buttonText: 'Okay'
-      })
+
+      this.props.showToast('La imagen ha sido cargada.')
       return imageRef.getDownloadURL()
     }).then((url) => {
       resolve(url)
@@ -190,18 +188,10 @@ class imagePicker extends React.Component {
           toPost: false,
           imageSelected : null
         })
-        Toast.show({
-          text: 'Se ha publicado satisfactoriamente.',
-          position: 'bottom',
-          buttonText: 'Okay'
-        })
+        this.props.showToast('Se ha publicado satisfactoriamente.')
     }
     else{
-      Toast.show({
-        text: 'Asegúrese de llenar todos los campos antes de enviar.',
-        position: 'bottom',
-        buttonText: 'Okay'
-      })
+      this.props.showToast('Asegúrese de llenar todos los campos antes de enviar.')
     }
 
 

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "130858667369",
+    "firebase_url": "https://universidad-41c49.firebaseio.com",
+    "project_id": "universidad-41c49",
+    "storage_bucket": "universidad-41c49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130858667369:android:efc2ded64014cd5e",
+        "android_client_info": {
+          "package_name": "com.usbapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130858667369-c38dkl3500ercbiqgsf6ts4kk21tgjsp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6HuOPMhz24i7nfoHgWUQiYKNfxSqF5Nc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

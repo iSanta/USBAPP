@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Spinner, View } from 'native-base';
+import { Root, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Spinner, View, Toast } from 'native-base';
 import LogForm from './components/logForm';
-import firebase from 'firebase';
+import firebase from 'react-native-firebase';
 import Main from './components/main';
+import firebaseStorage from 'firebase';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -38,7 +39,7 @@ export default class App extends Component<{}> {
   }
 
 
-  componentWillMount(){
+  /*componentWillMount(){
     //---------------- Para no tener que loguearme cada vez durante el desarrollo
     this.setState({
       user: {
@@ -48,9 +49,20 @@ export default class App extends Component<{}> {
         uid: "JCARLOSSA120@HOTMAIL%2ECOM"
       }
     })
+  }*/
+
+  componentWillUnmount() {
+    Toast.toastInstance = null;
   }
 
 
+  showToast= (textShow) =>{
+    Toast.show({
+      text: textShow,
+      position: 'bottom',
+      buttonText: 'Okay'
+    })
+  }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   //recibe la informacion de el formulario de inicio de sesion cuando el inicio de sesion es exitoso
@@ -68,11 +80,11 @@ export default class App extends Component<{}> {
       //-----------------Verifica si el usuario esta logueado, si no lo esta, lo lleva al formunario de inicio de sesion
       if (this.state.user) {
         return(
-          <Main user={this.state.user}/>
+          <Main showToast={this.showToast} user={this.state.user}/>
         )
       }
       else{
-        return(<LogForm userInfo={this.loadUser} />)
+        return(<LogForm showToast={this.showToast} userInfo={this.loadUser} />)
       }
   }
 
@@ -83,7 +95,9 @@ export default class App extends Component<{}> {
   render() {
     return (
       <Container>
+        <Root>
         {this.loadContent()}
+        </Root>
       </Container>
     );
   }
@@ -110,6 +124,15 @@ const styles = StyleSheet.create({
 
 
 firebase.initializeApp({
+  apiKey: "AIzaSyBgLjjtZysVtP8sbz4fdxF4EytRAoo3KVU",
+  authDomain: "universidad-41c49.firebaseapp.com",
+  databaseURL: "https://universidad-41c49.firebaseio.com",
+  projectId: "universidad-41c49",
+  storageBucket: "universidad-41c49.appspot.com",
+  messagingSenderId: "130858667369"
+});
+
+firebaseStorage.initializeApp({
   apiKey: "AIzaSyBgLjjtZysVtP8sbz4fdxF4EytRAoo3KVU",
   authDomain: "universidad-41c49.firebaseapp.com",
   databaseURL: "https://universidad-41c49.firebaseio.com",

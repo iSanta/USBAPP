@@ -16,7 +16,7 @@ class main extends React.Component {
   }
   componentWillMount(){
     this.setState({
-      page: 'notes',
+      page: 'home',
       //title: 'Noticias',
       user: this.props.user
     })
@@ -27,15 +27,18 @@ class main extends React.Component {
       title,
     })
   }
+  showToast= (textShow) =>{
+    this.props.showToast(textShow)
+  }
 
   loadContent = () => {
     switch (this.state.page) {
       case 'home':
-          return(<Wall title={this.changeTitle} user={this.state.user}/>)
+          return(<Wall showToast={this.showToast} title={this.changeTitle} user={this.state.user}/>)
         break;
       case 'notes':
           return(
-            <Notes title={this.changeTitle} user={this.state.user}/>
+            <Notes showToast={this.showToast} title={this.changeTitle} user={this.state.user}/>
 
           )
       default:
@@ -73,7 +76,6 @@ class main extends React.Component {
 
   render(){
     return(
-      <Root>
         <Drawer
           ref={(ref) => { this.drawer = ref; }}
           content={<SideBar navigator={this.navigator} />}
@@ -103,7 +105,6 @@ class main extends React.Component {
         </Footer>
 
         </Drawer>
-      </Root>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Keyboard } from 'react-native';
-import { Text, Root, Header, Left, Button, Icon, Body, Title, Right, Content, Footer, FooterTab, Form, Item, Input, View, Toast } from 'native-base';
-import firebase from 'firebase';
+import { Text, Root, Header, Left, Button, Icon, Body, Title, Right, Content, Footer, FooterTab, Form, Item, Input, View, Container } from 'native-base';
+import firebase from 'react-native-firebase';
 import { encode, decode, encodeComponents, decodeComponents } from 'firebase-encode';
 
 class logForm extends Component {
@@ -52,11 +52,7 @@ class logForm extends Component {
 
         //------------------------------Determina si el user existe
         if (snapshot.exists()) {
-          Toast.show({
-            text: 'Este usuario ya se encuentra registrado',
-            position: 'bottom',
-            buttonText: 'Okay'
-          })
+          this.props.showToast('Este usuario ya se encuentra registrado')
         }
         else{
           //------------------------- Crea el array que va a ser fuardado en firebase
@@ -70,12 +66,7 @@ class logForm extends Component {
           //--------------------------Se hace el registro
           const dbRef = firebase.database().ref('users/' + uid);
           dbRef.set(record);
-
-          Toast.show({
-            text: 'El registro ha sido exitoso.',
-            position: 'bottom',
-            buttonText: 'Okay'
-          })
+          this.props.showToast('El registro ha sido exitoso.')
           this.setState({
             page: 'SessionInit',
             title: 'Inicia sesión'
@@ -90,11 +81,8 @@ class logForm extends Component {
       })
     }
     else{
-      Toast.show({
-        text: 'Por favor asegúrese de llenar todos los campos.',
-        position: 'bottom',
-        buttonText: 'Okay'
-      })
+      this.props.showToast('Por favor asegúrese de llenar todos los campos.')
+
     }
   }
 
@@ -139,22 +127,14 @@ class logForm extends Component {
           }
           else{
             //--------------------- fracaso en el intento de comparar la info de los inputs con la info de la DB de firebase
-            Toast.show({
-              text: 'La contraseña ingresada es incorrecta.',
-              position: 'bottom',
-              buttonText: 'Okay'
-            })
+            this.props.showToast('La contraseña ingresada es incorrecta.')
           }
 
 
         }
         else{
           //-------------------No existe el UID en la DB de firebase
-          Toast.show({
-            text: 'No se ha encontrado su correo en la base de datos.',
-            position: 'bottom',
-            buttonText: 'Okay'
-          })
+          this.props.showToast('No se ha encontrado su correo en la base de datos.')
         }
 
 
@@ -163,11 +143,7 @@ class logForm extends Component {
 
     }
     else{
-      Toast.show({
-        text: 'Por favor asegúrese de llenar todos los campos.',
-        position: 'bottom',
-        buttonText: 'Okay'
-      })
+      this.props.showToast('Por favor asegúrese de llenar todos los campos.')
     }
 
 
@@ -221,7 +197,7 @@ class logForm extends Component {
 
   render(){
     return(
-      <Root>
+      <Container>
         <Header style={styles.green}>
           <Left />
           <Body>
@@ -239,7 +215,7 @@ class logForm extends Component {
             </Button>
           </FooterTab>
         </Footer>
-      </Root>
+      </Container>
     )
   }
 }

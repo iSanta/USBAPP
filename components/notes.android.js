@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableHighlight} from 'react-native';
-import { Text, View, Form, Item, Input, List, Button, Icon, Toast, ListItem, Body, Right, Left} from 'native-base';
-import firebase from 'firebase';
+import { Root, Text, View, Form, Item, Input, List, Button, Icon, Toast, ListItem, Body, Right, Left} from 'native-base';
+import firebase from 'react-native-firebase';
 
 
 class Notes extends React.Component {
@@ -139,26 +139,14 @@ class Notes extends React.Component {
         this.setState({
           formOpened: false
         })
-        Toast.show({
-          text: 'La asignatura ha sido registrada correctamente.',
-          position: 'bottom',
-          buttonText: 'Okay'
-        })
+        this.props.showToast('La asignatura ha sido registrada correctamente.')
       }
       else{
-        Toast.show({
-          text: 'El total de porcentaje de la asignatura debe ser menor a 100.',
-          position: 'bottom',
-          buttonText: 'Okay'
-        })
+        this.props.showToast('El total de porcentaje de la asignatura debe ser menor a 100.')
       }
     }
     else{
-      Toast.show({
-        text: 'Asegúrese de llenar el campo de nombrer antes de enviar.',
-        position: 'bottom',
-        buttonText: 'Okay'
-      })
+      this.props.showToast('Asegúrese de llenar el campo de nombrer antes de enviar.')
     }
   }
 
@@ -329,32 +317,23 @@ class Notes extends React.Component {
       },100)
 
 
-      dataBaseRef.off();
-
-
-      this.setState({
-        editingSignature:false
-      })
-      Toast.show({
+      /*dataBaseRef.off();*/
+      this.props.showToast('La asignatura ha sido editada correctamente.')
+      /*Toast.show({
         text: 'La asignatura ha sido editada correctamente.',
         position: 'bottom',
         buttonText: 'Okay'
+      })*/
+      this.setState({
+        editingSignature:false
       })
     }
     else{
-      Toast.show({
-        text: 'El total de porcentaje de la asignatura debe ser menor a 100.',
-        position: 'bottom',
-        buttonText: 'Okay'
-      })
+      this.props.showToast('El total de porcentaje de la asignatura debe ser menor a 100.')
     }
   }
   else{
-    Toast.show({
-      text: 'Asegúrese de llenar el campo de nombrer antes de enviar.',
-      position: 'bottom',
-      buttonText: 'Okay'
-    })
+    this.props.showToast('Asegúrese de llenar el campo de nombrer antes de enviar.')
   }
   }
 
@@ -627,9 +606,9 @@ class Notes extends React.Component {
 
   render(){
     return(
-      <View>
-        {this.loadContent()}
-      </View>
+        <View>
+          {this.loadContent()}
+        </View>
     )
   }
 }

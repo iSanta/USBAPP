@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Image, CameraRoll, ScrollView, TouchableHighlight, Dimensions } from 'react-native';
-import { Text, View, Card, CardItem, Left, Thumbnail, Body, Button, Icon, Right, H1, H3, Form, Item, Input } from 'native-base';
-import firebase from 'firebase';
+import { Root, Text, View, Card, CardItem, Left, Thumbnail, Body, Button, Icon, Right, H1, H3, Form, Item, Input } from 'native-base';
+import firebase from 'react-native-firebase';
 import ImagePicker from './imagePicker';
 var dataBaseRef = null;
 const { width } = Dimensions.get('window')
@@ -49,14 +49,17 @@ class Wall extends React.Component {
 
   }
 
+  showToast=(text)=>{
+    this.props.showToast(text)
+  }
 
   render(){
     let image = this.state.image;
     return(
-      <View>
+      <Root>
 
         <View>
-          <ImagePicker user={this.state.user} />
+          <ImagePicker showToast={this.showToast} user={this.state.user} />
         </View>
         {
           this.state.pictures.map((post, index) =>(
@@ -91,7 +94,7 @@ class Wall extends React.Component {
           </Card>
           )).reverse()
         }
-      </View>
+      </Root>
     )
   }
 
