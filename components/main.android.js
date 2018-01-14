@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet} from 'react-native';
-import {Root, Header, Left, Body, Title, Right, Content, Footer, FooterTab, Icon, Text, Button, Drawer} from 'native-base';
+import { Header, Left, Body, Title, Right, Content, Footer, FooterTab, Icon, Text, Button, Drawer} from 'native-base';
 import SideBar from './sidebar';
 import Wall from './wall';
 import Notes from './notes';
@@ -95,7 +95,7 @@ class main extends React.Component {
     return(
         <Drawer
           ref={(ref) => { this.drawer = ref; }}
-          content={<SideBar navigator={this.navigator} />}
+          content={<SideBar user={this.state.user} navigator={this.navigator} />}
           onClose={() => this.closeDrawer()} >
 
 

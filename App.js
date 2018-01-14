@@ -39,7 +39,7 @@ export default class App extends Component<{}> {
   }
 
 
-  /*componentWillMount(){
+  componentWillMount(){
     //---------------- Para no tener que loguearme cada vez durante el desarrollo
     this.setState({
       user: {
@@ -49,7 +49,7 @@ export default class App extends Component<{}> {
         uid: "JCARLOSSA120@HOTMAIL%2ECOM"
       }
     })
-  }*/
+  }
 
   componentWillUnmount() {
     Toast.toastInstance = null;

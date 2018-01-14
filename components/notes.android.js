@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableHighlight} from 'react-native';
-import { Root, Text, View, Form, Item, Input, List, Button, Icon, Toast, ListItem, Body, Right, Left} from 'native-base';
+import { Text, View, Form, Item, Input, List, Button, Icon, Toast, ListItem, Body, Right, Left} from 'native-base';
 import firebase from 'react-native-firebase';
 
 
@@ -31,13 +31,15 @@ class Notes extends React.Component {
       selectedSignature: [],
       signatureOpened: false,
       editingSignature: false,
-      boredArray: []
+      boredArray: [],
+      deleteOptionS: null,
     }
   }
 
   componentWillMount(){
     this.setState({
-      user: this.props.user
+      user: this.props.user,
+      deleteOptionS: false
     })
 
     this.props.title("Notas")
@@ -337,6 +339,58 @@ class Notes extends React.Component {
   }
   }
 
+
+
+  deleteNote = () => {
+    dataBaseRef = firebase.database().ref('notes/'+this.state.user.uid+'/'+this.state.selectedSignature.asignatureId);
+    dataBaseRef.remove()
+    this.setState({
+      deleteOptionS: false,
+      signatureOpened: false,
+      selectedSignature: [],
+      allNotes: []
+    })
+    this.props.showToast('La asignatura ha sido eliminada correctamente.')
+
+    dataBaseRef.off();
+
+    setTimeout(()=>{
+      dataBaseRef = firebase.database().ref('notes/'+this.state.user.uid+'/');
+      dataBaseRef.on('child_added', snapchot =>{
+        this.setState({
+          allNotes: this.state.allNotes.concat(snapchot.val())
+        })
+      })
+    },100)
+  }
+  ////////////////////////////////////////////////////////
+  //Muestra la confirmacion para la eliminacion de la nota
+  ////////////////////////////////////////////////////////
+  deleteOption = () => {
+    if (this.state.deleteOptionS) {
+      return(
+        <View style={styles.row}>
+          <Text>{'¿Estás seguro que quieres eliminar este registro?'}</Text>
+          <Button style={styles.buttons} onPress={() => {this.setState({deleteOptionS: false})} }>
+            <Text>No</Text>
+          </Button>
+          <Button style={styles.cancelButtons} onPress={this.deleteNote}>
+            <Icon style={{color: "#fff"}} name='trash' />
+            <Text>Si</Text>
+          </Button>
+        </View>
+      )
+    }
+    else{
+      return(
+        <Button style={styles.cancelButtons} onPress={()=>{this.setState({deleteOptionS: true})} }>
+          <Icon style={{color: "#fff"}} name='trash' />
+          <Text>Eliminar</Text>
+        </Button>
+      )
+    }
+  }
+
   allNotes = () => {
     if (this.state.notesEmpty) {
       return(
@@ -523,7 +577,7 @@ class Notes extends React.Component {
                 </Right>
               </ListItem>
               <View style={styles.row}>
-                <Button style={styles.cancelButtons} onPress={() => {this.setState({signatureOpened: false, selectedSignature: []})}}>
+                <Button style={styles.cancelButtons} onPress={() => {this.setState({deleteOptionS: false, signatureOpened: false, selectedSignature: []})}}>
                   <Icon style={{color: "#fff"}} name='undo' />
                   <Text>Atras</Text>
                 </Button>
@@ -545,11 +599,15 @@ class Notes extends React.Component {
                     signaturePercent6: this.state.selectedSignature.percent5,
                     signatureNote7: this.state.selectedSignature.nota6,
                     signaturePercent7: this.state.selectedSignature.percent6,
+                    deleteOptionS: false,
                   })
                 }}>
                   <Icon style={{color: "#fff"}} name='create' />
                   <Text>Editar</Text>
                 </Button>
+                {
+                  this.deleteOption()
+                }
               </View>
             </List>
           )

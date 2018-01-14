@@ -56,7 +56,7 @@ class Wall extends React.Component {
   render(){
     let image = this.state.image;
     return(
-      <Root>
+      <View>
 
         <View>
           <ImagePicker showToast={this.showToast} user={this.state.user} />
@@ -94,7 +94,7 @@ class Wall extends React.Component {
           </Card>
           )).reverse()
         }
-      </Root>
+      </View>
     )
   }
 
