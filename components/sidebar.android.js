@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableHighlight} from 'react-native';
-import { Text, View, List, ListItem, Button } from 'native-base';
+import { Text, View, List, ListItem, Button, Left, Icon, Body } from 'native-base';
 
 
 class SideBar extends React.Component {
@@ -32,6 +32,22 @@ class SideBar extends React.Component {
               <Text>Notas</Text>
             </TouchableHighlight>
           </ListItem>
+
+          <ListItem icon>
+
+            <Left>
+              <Icon style={{color: '#F44336'}} name="power" />
+            </Left>
+            <Body>
+            <TouchableHighlight onPress={()=>{
+              this.props.navigator('closeSession')
+            }}>
+              <Text>Cerrar Sesión</Text>
+              </TouchableHighlight>
+            </Body>
+
+          </ListItem>
+
         </List>
       </View>
     )

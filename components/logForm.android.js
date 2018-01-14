@@ -21,6 +21,16 @@ class logForm extends Component {
     })
   }
 
+  componentWillUnmount() {
+    //dataBaseRef.off();
+    this.setState({
+      page: null,
+      email: null,
+      pass: null,
+      name: null,
+    })
+  }
+
 
 
 

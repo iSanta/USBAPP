@@ -22,6 +22,12 @@ class main extends React.Component {
     })
   }
 
+  componentWillUnmount(){
+    this.setState({
+      user: null
+    })
+  }
+
   changeTitle = (title) => {
     this.setState({
       title,
@@ -39,8 +45,12 @@ class main extends React.Component {
       case 'notes':
           return(
             <Notes showToast={this.showToast} title={this.changeTitle} user={this.state.user}/>
-
           )
+        break;
+      case 'closeSession':
+          this.props.logOff;
+          return(<Text>Pseudosesioncerrada</Text>)
+        break;
       default:
           return(<Text>Hola</Text>)
     }
@@ -68,10 +78,17 @@ class main extends React.Component {
 
 
   navigator = (page) =>{
-    this.setState({
-      page,
-    })
-    this.closeDrawer()
+    if (page == 'closeSession') {
+      this.props.logOff();
+    }
+    else{
+      this.setState({
+        page,
+      })
+      this.closeDrawer()
+    }
+
+
   }
 
   render(){

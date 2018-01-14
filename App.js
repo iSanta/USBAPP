@@ -73,6 +73,13 @@ export default class App extends Component<{}> {
     })
   }
 
+  logOffF = () =>{
+    this.setState({
+      user: null
+    })
+    this.forceUpdate()
+  }
+
   ///////////////////////////////////////////////////////
   //Se encarga comprobar si el usuario esta loguado o no
   ///////////////////////////////////////////////////////
@@ -80,10 +87,10 @@ export default class App extends Component<{}> {
       //-----------------Verifica si el usuario esta logueado, si no lo esta, lo lleva al formunario de inicio de sesion
       if (this.state.user) {
         return(
-          <Main showToast={this.showToast} user={this.state.user}/>
+          <Main logOff={this.logOffF} showToast={this.showToast} user={this.state.user}/>
         )
       }
-      else{
+      else if (this.state.user === null){
         return(<LogForm showToast={this.showToast} userInfo={this.loadUser} />)
       }
   }
