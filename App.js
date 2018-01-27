@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, StatusBar } from 'react-native';
 import { Root, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Spinner, View, Toast } from 'native-base';
 import LogForm from './components/logForm';
 import firebase from 'react-native-firebase';
@@ -41,14 +41,14 @@ export default class App extends Component<{}> {
 
   componentWillMount(){
     //---------------- Para no tener que loguearme cada vez durante el desarrollo
-    this.setState({
+    /*this.setState({
       user: {
         displayName: 'Juan Carlos Santa Abreu',
         email: 'Jcarlossa120@hotmail.com',
         photoURL: "https://firebasestorage.googleapis.com/v0/b/universidad-41c49.appspot.com/o/profilePics%2Fno-photo-male.jpg?alt=media&token=65b5f92a-aab5-47c8-bcd5-dee6758335ba",
         uid: "JCARLOSSA120@HOTMAIL%2ECOM"
       }
-    })
+    })*/
   }
 
   componentWillUnmount() {
@@ -102,6 +102,9 @@ export default class App extends Component<{}> {
   render() {
     return (
       <Container>
+        <StatusBar
+         backgroundColor="green"
+       />
         <Root>
         {this.loadContent()}
         </Root>

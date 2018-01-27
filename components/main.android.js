@@ -4,6 +4,7 @@ import { Header, Left, Body, Title, Right, Content, Footer, FooterTab, Icon, Tex
 import SideBar from './sidebar';
 import Wall from './wall';
 import Notes from './notes';
+import Reminder from './reminder';
 
 class main extends React.Component {
   constructor(props) {
@@ -50,6 +51,9 @@ class main extends React.Component {
       case 'closeSession':
           this.props.logOff;
           return(<Text>Pseudosesioncerrada</Text>)
+        break;
+      case 'reminder':
+          return(<Reminder showToast={this.showToast} title={this.changeTitle} user={this.state.user} />)
         break;
       default:
           return(<Text>Hola</Text>)

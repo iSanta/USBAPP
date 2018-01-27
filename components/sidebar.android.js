@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableHighlight} from 'react-native';
-import { Text, View, List, ListItem, Button, Left, Icon, Body, Thumbnail } from 'native-base';
+import { Text, View, List, ListItem, Button, Left, Icon, Thumbnail, Body } from 'native-base';
 
 
 class SideBar extends React.Component {
@@ -36,18 +36,32 @@ class SideBar extends React.Component {
       </View>
         <List>
           <ListItem>
-            <TouchableHighlight onPress={()=>{
-              this.props.navigator('home')
-            }}>
-              <Text>Home</Text>
-            </TouchableHighlight>
+            <Body>
+              <TouchableHighlight onPress={()=>{
+                this.props.navigator('home')
+              }}>
+                <Text>Home</Text>
+              </TouchableHighlight>
+            </Body>
           </ListItem>
           <ListItem>
-            <TouchableHighlight onPress={()=>{
-              this.props.navigator('notes')
-            }}>
-              <Text>Notas</Text>
-            </TouchableHighlight>
+            <Body>
+              <TouchableHighlight onPress={()=>{
+                this.props.navigator('notes')
+              }}>
+                <Text>Notas</Text>
+              </TouchableHighlight>
+            </Body>
+          </ListItem>
+
+          <ListItem>
+            <Body>
+              <TouchableHighlight onPress={()=>{
+                this.props.navigator('reminder')
+              }}>
+                <Text>Recordatorios</Text>
+              </TouchableHighlight>
+            </Body>
           </ListItem>
 
           <ListItem icon>

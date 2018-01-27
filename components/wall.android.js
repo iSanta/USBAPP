@@ -37,6 +37,7 @@ class Wall extends React.Component {
   }
 
   componentWillMount(){
+    this.props.title('Noticias')
     this.setState({
       user: this.props.user
     })

@@ -163,46 +163,46 @@ class Notes extends React.Component {
             <Input placeholder="Nombre" onChangeText={(data) => {this.setState({signatureName: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Nota #1"} onChangeText={(data) => {this.setState({signatureNote1: data})}} />
+            <Input keyboardType='numeric' placeholder={"Nota #1"} onChangeText={(data) => {this.setState({signatureNote1: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Porcentaje Nota #1"} onChangeText={(data) => {this.setState({signaturePercent1: data})}} />
+            <Input keyboardType='numeric' placeholder={"Porcentaje Nota #1"} onChangeText={(data) => {this.setState({signaturePercent1: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Nota #2"} onChangeText={(data) => {this.setState({signatureNote2: data})}} />
+            <Input keyboardType='numeric' placeholder={"Nota #2"} onChangeText={(data) => {this.setState({signatureNote2: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Porcentaje Nota #2"} onChangeText={(data) => {this.setState({signaturePercent2: data})}} />
+            <Input keyboardType='numeric' placeholder={"Porcentaje Nota #2"} onChangeText={(data) => {this.setState({signaturePercent2: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Nota #3"} onChangeText={(data) => {this.setState({signatureNote3: data})}} />
+            <Input keyboardType='numeric' placeholder={"Nota #3"} onChangeText={(data) => {this.setState({signatureNote3: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Porcentaje Nota #3"} onChangeText={(data) => {this.setState({signaturePercent3: data})}} />
+            <Input keyboardType='numeric' placeholder={"Porcentaje Nota #3"} onChangeText={(data) => {this.setState({signaturePercent3: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Nota #4"} onChangeText={(data) => {this.setState({signatureNote4: data})}} />
+            <Input keyboardType='numeric' placeholder={"Nota #4"} onChangeText={(data) => {this.setState({signatureNote4: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Porcentaje Nota #4"} onChangeText={(data) => {this.setState({signaturePercent4: data})}} />
+            <Input keyboardType='numeric' placeholder={"Porcentaje Nota #4"} onChangeText={(data) => {this.setState({signaturePercent4: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Nota #5"} onChangeText={(data) => {this.setState({signatureNote5: data})}} />
+            <Input keyboardType='numeric' placeholder={"Nota #5"} onChangeText={(data) => {this.setState({signatureNote5: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Porcentaje Nota #5"} onChangeText={(data) => {this.setState({signaturePercent5: data})}} />
+            <Input keyboardType='numeric' placeholder={"Porcentaje Nota #5"} onChangeText={(data) => {this.setState({signaturePercent5: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Nota #6"} onChangeText={(data) => {this.setState({signatureNote6: data})}} />
+            <Input keyboardType='numeric' placeholder={"Nota #6"} onChangeText={(data) => {this.setState({signatureNote6: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Porcentaje Nota #6"} onChangeText={(data) => {this.setState({signaturePercent6: data})}} />
+            <Input keyboardType='numeric' placeholder={"Porcentaje Nota #6"} onChangeText={(data) => {this.setState({signaturePercent6: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Nota #7"} onChangeText={(data) => {this.setState({signatureNote7: data})}} />
+            <Input keyboardType='numeric' placeholder={"Nota #7"} onChangeText={(data) => {this.setState({signatureNote7: data})}} />
           </Item>
           <Item>
-            <Input numeric placeholder={"Porcentaje Nota #7"} onChangeText={(data) => {this.setState({signaturePercent7: data})}} />
+            <Input keyboardType='numeric' placeholder={"Porcentaje Nota #7"} onChangeText={(data) => {this.setState({signaturePercent7: data})}} />
           </Item>
           <Button style={styles.buttons} onPress={this.upload} full>
             <Text>Enviar</Text>
@@ -414,59 +414,59 @@ class Notes extends React.Component {
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.nota0} numeric placeholder={"Nota #1"} onChangeText={(data) => {this.setState({signatureNote1: data})}} />
+                <Input defaultValue={item.nota0} keyboardType='numeric' placeholder={"Nota #1"} onChangeText={(data) => {this.setState({signatureNote1: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.percent0} numeric placeholder={"Porcentaje Nota #1"} onChangeText={(data) => {this.setState({signaturePercent1: data})}} />
+                <Input defaultValue={item.percent0} keyboardType='numeric' placeholder={"Porcentaje Nota #1"} onChangeText={(data) => {this.setState({signaturePercent1: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.nota1} numeric placeholder={"Nota #2"} onChangeText={(data) => {this.setState({signatureNote2: data})}} />
+                <Input defaultValue={item.nota1} keyboardType='numeric' placeholder={"Nota #2"} onChangeText={(data) => {this.setState({signatureNote2: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.percent1} numeric placeholder={"Porcentaje Nota #2"} onChangeText={(data) => {this.setState({signaturePercent2: data})}} />
+                <Input defaultValue={item.percent1} keyboardType='numeric' placeholder={"Porcentaje Nota #2"} onChangeText={(data) => {this.setState({signaturePercent2: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.nota2} numeric placeholder={"Nota #3"} onChangeText={(data) => {this.setState({signatureNote3: data})}} />
+                <Input defaultValue={item.nota2} keyboardType='numeric' placeholder={"Nota #3"} onChangeText={(data) => {this.setState({signatureNote3: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.percent2} numeric placeholder={"Porcentaje Nota #3"} onChangeText={(data) => {this.setState({signaturePercent3: data})}} />
+                <Input defaultValue={item.percent2} keyboardType='numeric' placeholder={"Porcentaje Nota #3"} onChangeText={(data) => {this.setState({signaturePercent3: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.nota3} numeric placeholder={"Nota #4"} onChangeText={(data) => {this.setState({signatureNote4: data})}} />
+                <Input defaultValue={item.nota3} keyboardType='numeric' placeholder={"Nota #4"} onChangeText={(data) => {this.setState({signatureNote4: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.percent3} numeric placeholder={"Porcentaje Nota #4"} onChangeText={(data) => {this.setState({signaturePercent4: data})}} />
+                <Input defaultValue={item.percent3} keyboardType='numeric' placeholder={"Porcentaje Nota #4"} onChangeText={(data) => {this.setState({signaturePercent4: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.nota4} numeric placeholder={"Nota #5"} onChangeText={(data) => {this.setState({signatureNote5: data})}} />
+                <Input defaultValue={item.nota4} keyboardType='numeric' placeholder={"Nota #5"} onChangeText={(data) => {this.setState({signatureNote5: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.percent4} numeric placeholder={"Porcentaje Nota #5"} onChangeText={(data) => {this.setState({signaturePercent5: data})}} />
+                <Input defaultValue={item.percent4} keyboardType='numeric' placeholder={"Porcentaje Nota #5"} onChangeText={(data) => {this.setState({signaturePercent5: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.nota5} numeric placeholder={"Nota #6"} onChangeText={(data) => {this.setState({signatureNote6: data})}} />
+                <Input defaultValue={item.nota5} keyboardType='numeric' placeholder={"Nota #6"} onChangeText={(data) => {this.setState({signatureNote6: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.percent5} numeric placeholder={"Porcentaje Nota #6"} onChangeText={(data) => {this.setState({signaturePercent6: data})}} />
+                <Input defaultValue={item.percent5} keyboardType='numeric' placeholder={"Porcentaje Nota #6"} onChangeText={(data) => {this.setState({signaturePercent6: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.nota6} numeric placeholder={"Nota #7"} onChangeText={(data) => {this.setState({signatureNote7: data})}} />
+                <Input defaultValue={item.nota6} keyboardType='numeric' placeholder={"Nota #7"} onChangeText={(data) => {this.setState({signatureNote7: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Item>
-                <Input defaultValue={item.percent6} numeric placeholder={"Porcentaje Nota #7"} onChangeText={(data) => {this.setState({signaturePercent7: data})}} />
+                <Input defaultValue={item.percent6} keyboardType='numeric' placeholder={"Porcentaje Nota #7"} onChangeText={(data) => {this.setState({signaturePercent7: data})}} />
                 <Icon style={styles.icon} name='create' />
               </Item>
               <Button style={styles.buttons} onPress={this.saveEdit} full>
